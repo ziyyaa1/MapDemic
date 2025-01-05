@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 import pandas as pd
 import os
 from flask_cors import CORS 
@@ -18,14 +18,21 @@ except FileNotFoundError:
 def home(): #base page
     return "Backend is working. Please access /api/data for JSON data."
 
-#provides data through this url (API endpoint)
+# Provides data through this URL (API endpoint)
 @app.route('/api/data', methods=['GET'])
 def get_data():
-    if aggregated_data is not None: #data is not null
-        print("Backend works.")
-        return jsonify(aggregated_data.to_dict(orient='records'))
-    else:
-        return jsonify({"error": "Data file not found or could not be loaded."}), 500
+    # Get page and size from query parameters, with default values //paging technique taught in os hehe
+    page = int(request.args.get('page', 1))  # Default to page 1
+    size = int(request.args.get('size', 100))  # Default page size is 100
+
+    # Read specific chunks of the dataset
+    skip_rows = (page - 1) * size
+    try:
+        chunk = pd.read_csv(DATA_FILE, skiprows=range(1, skip_rows + 1), nrows=size, header=0)
+        data = chunk.to_dict(orient="records")
+        return jsonify({"page": page, "size": size, "data": data})
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
     app.run(debug=True)
