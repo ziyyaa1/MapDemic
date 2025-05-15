@@ -1,5 +1,5 @@
 
-<img src="https://i.imgur.com/R2Ogw23.gif" width="100%">
+![Banner](https://i.imgur.com/R2Ogw23.gif)
 
 #  MapDemic
 **MapDemic** is a dynamic and interactive web platform that visualizes COVID-19 data on detailed, user-friendly maps.  
@@ -18,7 +18,7 @@ Designed to provide **real-time updates** with sleek filtering options, it empow
 -  **Customizable Filters**  
   Filter data by date, location, and case type (confirmed, recovered, deaths) for tailored insights.
 
-- ⚙ **Modern Tech Stack**  
+-  **Modern Tech Stack**  
   Built using **Python** for backend data processing and **React** for a responsive, smooth frontend experience.
 
 ---
