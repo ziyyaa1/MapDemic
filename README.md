@@ -1,5 +1,5 @@
+<img src="https://i.imgur.com/R2Ogw23.gif" width="100%" />
 
-![Banner](https://i.imgur.com/R2Ogw23.gif)
 
 #  MapDemic
 **MapDemic** is a dynamic and interactive web platform that visualizes COVID-19 data on detailed, user-friendly maps.  
